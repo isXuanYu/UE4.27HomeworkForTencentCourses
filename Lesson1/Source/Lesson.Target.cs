@@ -3,12 +3,12 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class Lesson1Target : TargetRules
+public class LessonTarget : TargetRules
 {
-	public Lesson1Target(TargetInfo Target) : base(Target)
+	public LessonTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.Add("Lesson1");
+		ExtraModuleNames.Add("Lesson");
 	}
 }

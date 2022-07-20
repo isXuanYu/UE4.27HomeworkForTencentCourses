@@ -5,7 +5,7 @@
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "Lesson1",
+			"Name": "Lesson",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}

@@ -1,6 +1,6 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "Lesson1Character.h"
+#include "LessonCharacter.h"
 #include "HeadMountedDisplayFunctionLibrary.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -10,9 +10,9 @@
 #include "GameFramework/SpringArmComponent.h"
 
 //////////////////////////////////////////////////////////////////////////
-// ALesson1Character
+// ALessonCharacter
 
-ALesson1Character::ALesson1Character()
+ALessonCharacter::ALessonCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -50,36 +50,36 @@ ALesson1Character::ALesson1Character()
 //////////////////////////////////////////////////////////////////////////
 // Input
 
-void ALesson1Character::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
+void ALessonCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	// Set up gameplay key bindings
 	check(PlayerInputComponent);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
-	PlayerInputComponent->BindAxis("MoveForward", this, &ALesson1Character::MoveForward);
-	PlayerInputComponent->BindAxis("MoveRight", this, &ALesson1Character::MoveRight);
+	PlayerInputComponent->BindAxis("MoveForward", this, &ALessonCharacter::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &ALessonCharacter::MoveRight);
 
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
 	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
 	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("TurnRate", this, &ALesson1Character::TurnAtRate);
+	PlayerInputComponent->BindAxis("TurnRate", this, &ALessonCharacter::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
-	PlayerInputComponent->BindAxis("LookUpRate", this, &ALesson1Character::LookUpAtRate);
+	PlayerInputComponent->BindAxis("LookUpRate", this, &ALessonCharacter::LookUpAtRate);
 
 	// handle touch devices
-	PlayerInputComponent->BindTouch(IE_Pressed, this, &ALesson1Character::TouchStarted);
-	PlayerInputComponent->BindTouch(IE_Released, this, &ALesson1Character::TouchStopped);
+	PlayerInputComponent->BindTouch(IE_Pressed, this, &ALessonCharacter::TouchStarted);
+	PlayerInputComponent->BindTouch(IE_Released, this, &ALessonCharacter::TouchStopped);
 
 	// VR headset functionality
-	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &ALesson1Character::OnResetVR);
+	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &ALessonCharacter::OnResetVR);
 }
 
 
-void ALesson1Character::OnResetVR()
+void ALessonCharacter::OnResetVR()
 {
-	// If Lesson1 is added to a project via 'Add Feature' in the Unreal Editor the dependency on HeadMountedDisplay in Lesson1.Build.cs is not automatically propagated
+	// If Lesson is added to a project via 'Add Feature' in the Unreal Editor the dependency on HeadMountedDisplay in Lesson.Build.cs is not automatically propagated
 	// and a linker error will result.
 	// You will need to either:
 	//		Add "HeadMountedDisplay" to [YourProject].Build.cs PublicDependencyModuleNames in order to build successfully (appropriate if supporting VR).
@@ -88,29 +88,29 @@ void ALesson1Character::OnResetVR()
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
 }
 
-void ALesson1Character::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
+void ALessonCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
 		Jump();
 }
 
-void ALesson1Character::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
+void ALessonCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
 {
 		StopJumping();
 }
 
-void ALesson1Character::TurnAtRate(float Rate)
+void ALessonCharacter::TurnAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
 	AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
 }
 
-void ALesson1Character::LookUpAtRate(float Rate)
+void ALessonCharacter::LookUpAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
 
-void ALesson1Character::MoveForward(float Value)
+void ALessonCharacter::MoveForward(float Value)
 {
 	if ((Controller != nullptr) && (Value != 0.0f))
 	{
@@ -124,7 +124,7 @@ void ALesson1Character::MoveForward(float Value)
 	}
 }
 
-void ALesson1Character::MoveRight(float Value)
+void ALessonCharacter::MoveRight(float Value)
 {
 	if ( (Controller != nullptr) && (Value != 0.0f) )
 	{
