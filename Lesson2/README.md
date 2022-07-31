@@ -1,4 +1,4 @@
-# 演示视频和截图：
+# 演示视频：
 
 ### https://share.weiyun.com/VXwTV6pv
 
