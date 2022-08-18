@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{CC32781E-4C3A-37C5-CB9F-1C94C34564BC}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "Lesson",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
